@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   prius_msgs
   geometry_msgs
   nav_msgs
+  sensor_msgs
 )
 
 ###################################
@@ -31,6 +32,14 @@ set(prius_msg_to_cmd_vel_src
   )
 add_executable(prius_msg_to_cmd_vel ${prius_msg_to_cmd_vel_src})
 target_link_libraries(prius_msg_to_cmd_vel ${catkin_LIBRARIES})
+
+set(point_cloud_to_point_cloud2_src
+  src/repub_pc2.cpp
+  src/repub_pc2_node.cpp
+  )
+add_executable(point_cloud_to_point_cloud2 ${point_cloud_to_point_cloud2_src})
+target_link_libraries(point_cloud_to_point_cloud2 ${catkin_LIBRARIES})
+
 
 #############
 ## Install ##
