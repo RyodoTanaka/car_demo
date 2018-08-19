@@ -1,12 +1,12 @@
 #include <ros/console.h>
-#include <to_cmd_vel.hpp>
+#include <from_twist.hpp>
 
 #include <cmath>
 
 namespace pmc = prius::msg_converter;
 using namespace std;
 
-pmc::ToCmdVel::ToCmdVel()
+pmc::FromTwist::FromTwist()
     : wheel_base_(3.0), max_steer_angle_(0.6458), max_vel_(38.0),
       kp_throttle_(0.1), ki_throttle_(0.1), kp_brake_(0.1), ki_brake_(0.1),
       pub_rate_(25.0) {
@@ -29,9 +29,9 @@ pmc::ToCmdVel::ToCmdVel()
   control_msg_pub_ = nh_.advertise<prius_msgs::Control>("/prius", 1);
 
   cmd_vel_sub_ =
-      nh_.subscribe("/cmd_vel", 1, &pmc::ToCmdVel::CmdVelCallback, this);
+      nh_.subscribe("/cmd_vel", 1, &pmc::FromTwist::CmdVelCallback, this);
   current_state_sub_ = nh_.subscribe("/base_pose_ground_truth", 1,
-                                     &pmc::ToCmdVel::CurStateCallback, this);
+                                     &pmc::FromTwist::CurStateCallback, this);
 
   // publish to stop
   prius_msgs::Control ctrl_msg;
@@ -43,21 +43,21 @@ pmc::ToCmdVel::ToCmdVel()
   ROS_INFO("Prius message converter is ready.");
 }
 
-pmc::ToCmdVel::~ToCmdVel() {}
+pmc::FromTwist::~FromTwist() {}
 
-void pmc::ToCmdVel::CmdVelCallback(const geometry_msgs::Twist::ConstPtr &msg) {
+void pmc::FromTwist::CmdVelCallback(const geometry_msgs::Twist::ConstPtr &msg) {
   cmd_vel_mtx_.lock();
   cmd_vel_ = *msg;
   cmd_vel_mtx_.unlock();
 }
 
-void pmc::ToCmdVel::CurStateCallback(const nav_msgs::Odometry::ConstPtr &msg) {
+void pmc::FromTwist::CurStateCallback(const nav_msgs::Odometry::ConstPtr &msg) {
   current_state_mtx_.lock();
   current_state_ = *msg;
   current_state_mtx_.unlock();
 }
 
-void pmc::ToCmdVel::CtrlUpdate() {
+void pmc::FromTwist::CtrlUpdate() {
   static ros::Rate r(pub_rate_);
   static prius_msgs::Control ctrl_msg;
 
@@ -169,8 +169,8 @@ void pmc::ToCmdVel::CtrlUpdate() {
 }
 
 int main(int argc, char *argv[]) {
-  ros::init(argc, argv, "prius_msg_to_cmd_vel_node");
-  pmc::ToCmdVel pmc_tcv;
+  ros::init(argc, argv, "twist_to_prius_msg_node");
+  pmc::FromTwist pmc_tcv;
   pmc_tcv.CtrlUpdate();
 
   return 0;

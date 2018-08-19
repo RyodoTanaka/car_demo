@@ -1,5 +1,5 @@
-#ifndef TO_CMD_VEL_HPP_INCLUDED
-#define TO_CMD_VEL_HPP_INCLUDED
+#ifndef FROM_TWIST_HPP_INCLUDED
+#define FROM_TWIST_HPP_INCLUDED
 
 // usual header for ROS
 #include <ros/ros.h>
@@ -15,10 +15,10 @@
 
 namespace prius {
 namespace msg_converter {
-class ToCmdVel {
+class FromTwist {
 public:
-  ToCmdVel();
-  ~ToCmdVel();
+  FromTwist();
+  ~FromTwist();
   void CtrlUpdate();
 
 private:
