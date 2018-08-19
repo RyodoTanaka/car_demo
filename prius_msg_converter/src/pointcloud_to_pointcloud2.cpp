@@ -6,9 +6,13 @@
 namespace pmc = prius::msg_converter;
 using namespace std;
 
-pmc::PCtoPC2::PCtoPC2()
+pmc::PCtoPC2::PCtoPC2():
   nh_("~"),
+  frame_name_("")
 {
+  // Get parameters
+  nh_.param<std::string>("frame_name", frame_name_, frame_name_);
+
   // set subscriber
   pc2_sub_ = nh_.subscribe("/prius/center_laser/scan", 1, &pmc::PCtoPC2::PCCallback, this);
   // set publisher

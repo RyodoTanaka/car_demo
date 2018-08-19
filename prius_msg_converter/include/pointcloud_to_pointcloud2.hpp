@@ -21,6 +21,9 @@ namespace prius {
       ros::Subscriber pc2_sub_;
       // publisher
       ros::Publisher pc2_msg_pub_;
+
+      // parametes
+      std::string frame_name_;
     };
   }
 }
