@@ -39,5 +39,4 @@ RUN /bin/bash -c 'cd /tmp/workspace \
  && source /opt/ros/kinetic/setup.bash \
  && catkin_make'
 
-
-CMD ["/bin/bash", "-c", "source /opt/ros/kinetic/setup.bash && source /tmp/workspace/devel/setup.bash && roslaunch car_demo demo.launch"]
+CMD /tmp/workspace/script/.run.bash ${ROSDOCKER_ARG}
