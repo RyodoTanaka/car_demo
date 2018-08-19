@@ -24,6 +24,12 @@ RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu `lsb_release -cs` 
     ros-kinetic-joy \
  && apt-get clean
 
+RUN apt-get install net-tools
+RUN mkdir -p /tmp/workspace/script
+COPY rosdocker.bash /tmp/workspace/script
+ARG ROSDOCKER_ARG="client 172.17.0.1"
+ENV ROSDOCKER_ARG ${ROSDOCKER_ARG}
+COPY .run.bash /tmp/workspace/script
 
 RUN mkdir -p /tmp/workspace/src
 COPY prius_description /tmp/workspace/src/prius_description
@@ -33,5 +39,4 @@ RUN /bin/bash -c 'cd /tmp/workspace \
  && source /opt/ros/kinetic/setup.bash \
  && catkin_make'
 
-
-CMD ["/bin/bash", "-c", "source /opt/ros/kinetic/setup.bash && source /tmp/workspace/devel/setup.bash && roslaunch car_demo demo.launch"]
+CMD /tmp/workspace/script/.run.bash ${ROSDOCKER_ARG}
