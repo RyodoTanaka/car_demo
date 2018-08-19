@@ -26,8 +26,8 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(prius_msg_to_cmd_vel src/to_cmd_vel.cpp)
-target_link_libraries(prius_msg_to_cmd_vel ${catkin_LIBRARIES})
+add_executable(twist_to_prius_msg src/from_twist.cpp)
+target_link_libraries(twist_to_prius_msg ${catkin_LIBRARIES})
 
 add_executable(point_cloud_to_point_cloud2 src/pointcloud_to_pointcloud2.cpp)
 target_link_libraries(point_cloud_to_point_cloud2 ${catkin_LIBRARIES})
