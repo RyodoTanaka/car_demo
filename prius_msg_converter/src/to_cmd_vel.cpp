@@ -166,6 +166,11 @@ void pmc::ToCmdVel::CtrlUpdate()
   }
 }
 
+int main(int argc, char *argv[])
+{
+  ros::init(argc, argv, "prius_msg_to_cmd_vel_node");
+  pmc::ToCmdVel pmc_tcv;
+  pmc_tcv.CtrlUpdate();
 
-
-
+  return 0;
+}

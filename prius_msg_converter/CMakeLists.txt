@@ -26,11 +26,7 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-set(prius_msg_to_cmd_vel_src
-  src/to_cmd_vel.cpp
-  src/to_cmd_vel_node.cpp
-  )
-add_executable(prius_msg_to_cmd_vel ${prius_msg_to_cmd_vel_src})
+add_executable(prius_msg_to_cmd_vel src/to_cmd_vel.cpp)
 target_link_libraries(prius_msg_to_cmd_vel ${catkin_LIBRARIES})
 
 set(point_cloud_to_point_cloud2_src
