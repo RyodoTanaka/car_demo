@@ -29,11 +29,7 @@ include_directories(
 add_executable(prius_msg_to_cmd_vel src/to_cmd_vel.cpp)
 target_link_libraries(prius_msg_to_cmd_vel ${catkin_LIBRARIES})
 
-set(point_cloud_to_point_cloud2_src
-  src/repub_pc2.cpp
-  src/repub_pc2_node.cpp
-  )
-add_executable(point_cloud_to_point_cloud2 ${point_cloud_to_point_cloud2_src})
+add_executable(point_cloud_to_point_cloud2 src/pointcloud_to_pointcloud2.cpp)
 target_link_libraries(point_cloud_to_point_cloud2 ${catkin_LIBRARIES})
 
 
