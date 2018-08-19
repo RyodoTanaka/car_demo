@@ -14,10 +14,12 @@ namespace prius {
     private:
       void PCCallback(const sensor_msgs::PointCloud::ConstPtr &msg);
 
+      // node handler
       ros::NodeHandle nh_;
 
+      // subscriber
       ros::Subscriber pc2_sub_;
-      
+      // publisher
       ros::Publisher pc2_msg_pub_;
     };
   }

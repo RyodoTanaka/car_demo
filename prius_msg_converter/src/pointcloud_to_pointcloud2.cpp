@@ -8,7 +8,9 @@ using namespace std;
 
 pmc::PCtoPC2::PCtoPC2()
 {
+  // set subscriber
   pc2_sub_ = nh_.subscribe("/prius/center_laser/scan", 1, &pmc::PCtoPC2::PCCallback, this);
+  // set publisher
   pc2_msg_pub_ = nh_.advertise<sensor_msgs::PointCloud2>("/prius/center_laser/scan2", 1);
 
   ROS_INFO("point cloud to point cloud2 converter is ready.");
