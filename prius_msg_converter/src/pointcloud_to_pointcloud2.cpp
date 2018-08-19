@@ -29,6 +29,10 @@ void pmc::PCtoPC2::PCCallback(const sensor_msgs::PointCloud::ConstPtr &msg)
   sensor_msgs::PointCloud2 pub_msg;
   sensor_msgs::convertPointCloudToPointCloud2(*msg, pub_msg);
 
+  // change frame id to frame_name parameter
+  if(!frame_name_.empty())
+    pub_msg.header.frame_id = frame_id_;
+  
   pc2_msg_pub_.publish(pub_msg);
 }
 
