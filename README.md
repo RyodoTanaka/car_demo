@@ -33,10 +33,12 @@ The `build_demo.bash` script has arguments to setup the environment arguments to
 For them, we need to set following arguments for `build_demo.bash` script.  
 If you set nothing, it works without any other remote process.
 
-|Command|Meaning|
-|*---*|*---*|
-|server|Set the docker process ROS_MASTER process.|
-|client <ROS_MASTER IP>|Set the docker process ROS_CLIENT process. The second argument that you MUST set the IP of ROS_MASTER. In usual, that should be `172.17.0.1`|
+- server  
+  Set the docker process ROS_MASTER process.
+- client <ROS_MASTER IP>  
+  Set the docker process ROS_CLIENT process.  
+  The second argument that you MUST set the IP address of ROS_MASTER.  
+  In usual, that should be `172.17.0.1`.
 
 
 ```
