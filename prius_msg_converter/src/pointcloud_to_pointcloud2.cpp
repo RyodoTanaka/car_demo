@@ -39,6 +39,6 @@ void pmc::PCtoPC2::PCCallback(const sensor_msgs::PointCloud::ConstPtr &msg)
 int main(int argc, char** argv)
 {
   ros::init(argc, argv, "point_cloud_to_point_cloud2_node");
-  pmc::PCtoPC2 rpp2;
+  pmc::PCtoPC2 pc_to_pc2;
   ros::spin();
 }
