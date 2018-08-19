@@ -27,6 +27,8 @@ RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu `lsb_release -cs` 
 RUN apt-get install net-tools
 RUN mkdir -p /tmp/workspace/script
 COPY rosdocker.bash /tmp/workspace/script
+ARG ROSDOCKER_ARG="client 172.17.0.1"
+ENV ROSDOCKER_ARG ${ROSDOCKER_ARG}
 
 RUN mkdir -p /tmp/workspace/src
 COPY prius_description /tmp/workspace/src/prius_description
