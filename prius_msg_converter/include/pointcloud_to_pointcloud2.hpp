@@ -6,26 +6,27 @@
 #include <sensor_msgs/PointCloud.h>
 
 namespace prius {
-  namespace msg_converter {
-    class PCtoPC2 {
-    public:
-      PCtoPC2();
-      ~PCtoPC2();
-    private:
-      void PCCallback(const sensor_msgs::PointCloud::ConstPtr &msg);
+namespace msg_converter {
+class PCtoPC2 {
+public:
+  PCtoPC2();
+  ~PCtoPC2();
 
-      // node handler
-      ros::NodeHandle nh_;
+private:
+  void PCCallback(const sensor_msgs::PointCloud::ConstPtr &msg);
 
-      // subscriber
-      ros::Subscriber pc2_sub_;
-      // publisher
-      ros::Publisher pc2_msg_pub_;
+  // node handler
+  ros::NodeHandle nh_;
 
-      // parameters
-      std::string frame_name_;
-    };
-  }
+  // subscriber
+  ros::Subscriber pc2_sub_;
+  // publisher
+  ros::Publisher pc2_msg_pub_;
+
+  // parameters
+  std::string frame_name_;
+};
+}
 }
 
 #endif
