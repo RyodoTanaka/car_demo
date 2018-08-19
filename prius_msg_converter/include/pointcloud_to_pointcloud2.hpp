@@ -22,7 +22,7 @@ namespace prius {
       // publisher
       ros::Publisher pc2_msg_pub_;
 
-      // parametes
+      // parameters
       std::string frame_name_;
     };
   }
