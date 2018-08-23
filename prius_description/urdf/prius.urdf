@@ -276,6 +276,13 @@
     <origin xyz="0 0.4 1.8" rpy="0 0 -1.5707"/>
   </joint>
 
+  <!-- Velodyne link for Autoware  -->
+  <link name="velodyne"/>
+  <joint name="velodyne_joint" type="fixed">
+    <parent link="center_laser_link"/>
+    <child link="velodyne"/>
+  </joint>
+  
   <link name="front_left_laser_link">
     <inertial>
       <mass value="1"/>
