@@ -1,0 +1,5 @@
+<launch>
+  <node name="pointcloud_to_pointcloud2_node" pkg="prius_msg_converter" type="pointcloud_to_pointcloud2" output="screen">
+    <param name="frame_name" value="velodyne" type="string"/>
+  </node>
+</launch>
