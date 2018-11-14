@@ -40,4 +40,4 @@ sudo nvidia-docker run -it \
   -v "/dev/input:/dev/input" \
   --privileged \
   --rm=true \
-  osrf/car_demo
+  autoware/car_demo
