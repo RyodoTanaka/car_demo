@@ -1,4 +1,5 @@
-FROM osrf/ros:kinetic-desktop
+FROM autoware/autoware:latest-kinetic
+USER root
 
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 ENV PATH /usr/local/nvidia/bin:${PATH}
