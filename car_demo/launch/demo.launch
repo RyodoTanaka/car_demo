@@ -17,16 +17,23 @@
   <node pkg="fake_localization" type="fake_localization" name="fake_localization">
     <!-- <remap from="base_pose_ground_truth" to="/prius/base_pose_ground_truth"/> -->
   </node>
-  <node pkg="tf2_ros" type="static_transform_publisher" name="very_inaccurate_odom" args="0 0 0 0 0 0 odom base_link"/>
-  <node pkg="car_demo" type="joystick_translator" name="joystick_translator"/>
+
+  <!-- Launch the twist message converter -->
+  <include file="$(find prius_msg_converter)/launch/from_twist.launch"/>
+
+  <!-- Launch PointCloud to PointCloud2 republisher -->
+  <include file="$(find prius_msg_converter)/launch/pointcloud_to_pointcloud2.launch"/>
+
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="very_inaccurate_odom" args="0 0 0 0 0 0 odom base_link"/> -->
+  <!-- <node pkg="car_demo" type="joystick_translator" name="joystick_translator"/> -->
 
   <!-- Run two joy nodes publishing to the same topic, just to cover two possible joystick locations -->
-  <node pkg="joy" type="joy_node" name="joy_node0">
-    <param name="dev" value="/dev/input/js0"/>
-  </node>
-  <node pkg="joy" type="joy_node" name="joy_node1">
-    <param name="dev" value="/dev/input/js1"/>
-  </node>
+  <!-- <node pkg="joy" type="joy_node" name="joy_node0"> -->
+  <!--   <param name="dev" value="/dev/input/js0"/> -->
+  <!-- </node> -->
+  <!-- <node pkg="joy" type="joy_node" name="joy_node1"> -->
+  <!--   <param name="dev" value="/dev/input/js1"/> -->
+  <!-- </node> -->
 
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -x 3 -y -12 -z 0.5 -model prius"/>
 

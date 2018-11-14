@@ -276,6 +276,13 @@
     <origin xyz="0 0.4 1.8" rpy="0 0 -1.5707"/>
   </joint>
 
+  <!-- Velodyne link for Autoware  -->
+  <link name="velodyne"/>
+  <joint name="velodyne_joint" type="fixed">
+    <parent link="center_laser_link"/>
+    <child link="velodyne"/>
+  </joint>
+  
   <link name="front_left_laser_link">
     <inertial>
       <mass value="1"/>
@@ -521,7 +528,8 @@
       </ray>
       <plugin name='center_laser' filename='libgazebo_ros_block_laser.so'>
         <topicName>/prius/center_laser/scan</topicName>
-        <frameName>center_laser_link</frameName>
+        <frameName>velodyne</frameName>
+        <!-- <frameName>center_laser_link</frameName> -->
       </plugin>
       <always_on>1</always_on>
       <update_rate>30</update_rate>

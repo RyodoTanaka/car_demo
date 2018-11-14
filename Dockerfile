@@ -34,6 +34,7 @@ COPY .run.bash /tmp/workspace/script
 RUN mkdir -p /tmp/workspace/src
 COPY prius_description /tmp/workspace/src/prius_description
 COPY prius_msgs /tmp/workspace/src/prius_msgs
+COPY prius_msg_converter /tmp/workspace/src/prius_msg_converter
 COPY car_demo /tmp/workspace/src/car_demo
 RUN /bin/bash -c 'cd /tmp/workspace \
  && source /opt/ros/kinetic/setup.bash \

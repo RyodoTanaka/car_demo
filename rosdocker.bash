@@ -40,4 +40,6 @@ elif [ $1 = "server" ]; then
     _func_rosdockerserver
 elif [ $1 = "client" ]; then
     _func_rosdockerclient $2
+else
+    _func_rosdockerserver
 fi
